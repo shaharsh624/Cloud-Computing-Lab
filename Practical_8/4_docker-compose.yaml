@@ -1,0 +1,30 @@
+name: website
+services:
+  wordpress:
+    image: wordpress
+    restart: always
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: harshshahdev
+      WORDPRESS_DB_PASSWORD: mypassword
+      WORDPRESS_DB_NAME: mydb
+      WORDPRESS_TABLE_PREFIX: cclab
+    volumes:
+      - wordpress:/var/www/html
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_DATABASE: wordpress_db
+      MYSQL_ROOT_PASSWORD: mypassword
+    command: '--default-authentication-plugin=mysql_native_password'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:

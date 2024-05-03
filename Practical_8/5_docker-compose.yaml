@@ -1,0 +1,31 @@
+version: "3"
+services:
+  mariadb_db:
+    container_name: mariadb_container
+    image: mariadb
+    restart: always
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_DATABASE: testdb
+      MARIADB_USER: harsh
+      MARIADB_PASSWORD: wp_password
+    volumes:
+    - mariadb_vol:/var/lib/mysql
+  
+  wordpress:
+    depends_on:
+      - mariadb_db
+    image: wordpress:latest
+    restart: always
+    ports:
+      - "8000:80"
+    environment:
+      WORDPRESS_DB_HOST: mariadb_db:3306
+      WORDPRESS_DB_NAME: testdb
+      WORDPRESS_DB_USER: harsh
+      WORDPRESS_DB_PASSWORD: wp_password
+    volumes:
+      ["./:/var/www/html"]
+
+volumes:
+ mariadb_vol: {}

@@ -1,0 +1,5 @@
+services:
+  website1:
+    image: wordpress
+    ports: 
+      - "3000:80"

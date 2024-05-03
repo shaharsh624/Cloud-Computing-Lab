@@ -1,0 +1,11 @@
+Image: BusyBox
+
+1. Create 3 containers
+2. Create a network and attach the containers to it (21BCP359_net)
+3. Ping A from C using IP Address
+4. Ping C from B using container name
+
+
+172.17.0.2
+172.17.0.3
+172.17.0.4

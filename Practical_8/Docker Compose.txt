@@ -1,0 +1,23 @@
+docker-compose.yml
+docker.compose.yaml
+compose.yml
+compose.yaml - default
+
+
+
+# Docker Compose Commands
+
+docker-compose up -> Create
+docker-compose down -> destroy & delete
+
+docker-compose ls
+docker-compose start
+docker-compose stop
+
+
+
+
+
+# Connecting to MARIADB container and running commands in it
+
+mariadb -h mariadb_db -u harsh -p

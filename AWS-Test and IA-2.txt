@@ -1,0 +1,21 @@
+### AWS Lab Test
+
+Deploy two different websites in such a way that I can access both of them using a single URL. Refreshing the URL can randomly take me to any of the two websites. One of the websites should display your Name and Roll number at some place.  The resources used to deploy the websites should increase or decrease according to the incoming traffic. 
+
+
+
+### IA 2
+
+docker create network myflaskmongonet
+
+docker pull mongo:latest
+
+docker run -d -p 27017:27017 --network myflaskmongonet --name 21bcp359_mongo mongo:latest
+
+docker build --tag 21bcp359_flask_mongo .
+
+docker run -dit -p 5000:5000 --name=21bcp359_flaskapp 21bcp359_flask_mongo
+
+docker tag 21bcp359_flask_mongo shaharsh624/21bcp359_flaskapp
+
+docker push shaharsh624/21bcp359_flaskapp
